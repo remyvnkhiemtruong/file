@@ -7,14 +7,17 @@
   <title>Nhận phiếu tài khoản HCMUE</title>
 </head>
 <body>
-  <main><p>Đang mở <a id="account" href="https://script.google.com/macros/s/AKfycbzqynIlNFsoqBa_nnTNvSyYPKdHvSmKlqSvtPrnxg375B7ReZmKEGWSMKwJUgPGgy5cew/exec?page=account&amp;v=9">trang nhận phiếu tài khoản HCMUE</a>…</p></main>
+  <main><p>Đang mở <a id="account" href="https://script.google.com/macros/s/AKfycbzqynIlNFsoqBa_nnTNvSyYPKdHvSmKlqSvtPrnxg375B7ReZmKEGWSMKwJUgPGgy5cew/exec?page=shifts&amp;view=receipt">trang lấy phiếu tài khoản HCMUE</a>…</p></main>
   <script>
     const link = document.getElementById('account');
     const params = new URLSearchParams(location.hash.slice(1));
     const claim = params.get('claim');
     const id = params.get('mssv');
     if (/^[0-9a-f]{32}$/.test(claim || '')) {
+      link.search = '?page=account';
       link.hash = 'claim=' + claim + (/^[0-9]{10}$/.test(id || '') ? '&mssv=' + id : '');
+    } else if (new URLSearchParams(location.search).get('legacy') === '1') {
+      link.search = '?page=account';
     }
     location.replace(link.href);
   </script>
