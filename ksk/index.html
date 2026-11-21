@@ -1,20 +1,61 @@
 <!doctype html>
 <html lang="vi">
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width,initial-scale=1">
-<meta name="referrer" content="no-referrer">
-<meta http-equiv="refresh" content="0;url=https://script.google.com/macros/s/AKfycbxzCTJj70oG-vJAkE7a53z0asjB9sBuIUs_jZf2C34ha9_MdIMVszHMwSjpOJmfIkoa/exec">
-<title>Cổng mã QR khám sức khỏe HCMUE</title>
-<style>
-  body{margin:0;background:#edf4f2;color:#123f3d;font:1rem/1.5 system-ui,sans-serif}
-  main{max-width:33rem;margin:clamp(2rem,9vw,6rem) auto;padding:0 1rem}
-  section{background:white;border:1px solid #d0e0dc;border-radius:1rem;padding:1.5rem}
-  h1{margin-top:0;line-height:1.2}
-  a{display:inline-block;padding:.7rem 1rem;border-radius:.5rem;background:#116157;color:white;font-weight:bold}
-</style>
-<main><section>
-  <h1>Cổng mã QR khám sức khỏe HCMUE</h1>
-  <p>Nếu biểu mẫu chưa tự mở, bấm nút bên dưới.</p>
-  <a href="https://script.google.com/macros/s/AKfycbxzCTJj70oG-vJAkE7a53z0asjB9sBuIUs_jZf2C34ha9_MdIMVszHMwSjpOJmfIkoa/exec" referrerpolicy="no-referrer">Mở biểu mẫu lấy mã QR</a>
-</section></main>
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="referrer" content="no-referrer">
+  <meta name="theme-color" content="#123f3d">
+  <meta name="description" content="Cổng tra cứu thông tin và lấy mã QR khám sức khỏe sinh viên Trường Đại học Sư phạm TP.HCM (HCMUE).">
+  <title>Lấy mã QR khám sức khỏe · HCMUE</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><rect width='100' height='100' rx='20' fill='%23116157'/><path fill='white' d='M25 25h20v20H25zm30 0h20v20H55zm-30 30h20v20H25zm35 5h10v10H60zm10-10h10v10H70zm-10 20h20v10H60z'/></svg>">
+  <link rel="stylesheet" href="./portal.css">
+  <script defer src="./vendor/qrcodegen.js"></script>
+  <script type="module" src="./portal.js"></script>
+</head>
+<body>
+  <header>
+    <div class="brand">
+      <span class="brand-mark" aria-hidden="true">+</span>
+      <span>Khám sức khỏe sinh viên · HCMUE</span>
+    </div>
+  </header>
+
+  <main>
+    <h1>Lấy mã QR khám sức khỏe</h1>
+    <p class="intro">Nhập mã số sinh viên để lấy mã QR dùng tại bàn khám.</p>
+
+    <form class="card" id="verification" novalidate>
+      <label for="student">Mã số sinh viên</label>
+      <input id="student" type="text" inputmode="numeric" maxlength="20" placeholder="Ví dụ 52.01.000.001 hoặc 5201000001" autocomplete="off" spellcheck="false" required aria-describedby="notice">
+      <p id="notice" class="error" role="alert" hidden></p>
+      <button id="verify" type="submit">Lấy mã QR</button>
+    </form>
+
+    <section class="card result" id="result" hidden aria-labelledby="result-title">
+      <h2 id="result-title" tabindex="-1">Mã QR của bạn</h2>
+      <canvas id="qr" width="370" height="370" role="img" aria-label="Mã QR khám sức khỏe"></canvas>
+      <div class="student-details">
+        <p id="student-name"></p>
+        <p id="student-result"></p>
+        <p id="student-birth"></p>
+      </div>
+      <aside class="direction">
+        <strong>Quét mã QR tại bàn khám để lấy mã xét nghiệm</strong>
+        <span>Giữ màn hình này mở hoặc tải ảnh mã QR để xuất trình cho nhân viên tại bàn khám.</span>
+      </aside>
+      <div class="actions">
+        <a id="download" role="button" class="btn-download" download="QR_KSK.png" hidden>Tải ảnh mã QR</a>
+        <button type="button" id="reset" class="secondary">Nhập MSSV khác</button>
+      </div>
+    </section>
+
+    <noscript>
+      <div class="card" style="margin-top:1rem;color:#b3261e;text-align:center;">
+        Vui lòng bật JavaScript trên trình duyệt để sử dụng cổng tra cứu mã QR.
+      </div>
+    </noscript>
+
+    <footer>Trường Đại học Sư phạm TP.HCM · HCMUE</footer>
+  </main>
+</body>
 </html>

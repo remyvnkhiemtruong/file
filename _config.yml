@@ -1,0 +1,4 @@
+include:
+  - ksk/vendor
+  - ksk/data
+  - .nojekyll

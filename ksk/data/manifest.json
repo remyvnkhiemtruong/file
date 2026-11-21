@@ -1,0 +1,15 @@
+{
+  "version": 1,
+  "algorithm": "AES-256-GCM/PBKDF2-SHA256",
+  "iterations": 100000,
+  "salt": "+Llw278ISNhCvO3dcXVK8Q==",
+  "generation": "7bdca9cc845c2d5d85f1b03a",
+  "generatedAt": "2026-11-20T23:57:53.231Z",
+  "count": 16831,
+  "excludedDuplicateMssv": 5,
+  "invalidRows": 1,
+  "source": {
+    "book": "11rvrUbvA9HIjhEhs_99O95sVxoC7omdqi9QeypmvBgE",
+    "tab": 1077009534
+  }
+}
